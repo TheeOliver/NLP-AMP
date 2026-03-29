@@ -484,6 +484,11 @@ if __name__ == "__main__":
     )
     
     plot_training_history(veltri_history, "Veltri")
+
+    # Save Veltri model
+    veltri_model_path = os.path.join(RESULTS_DIR, 'prott5_veltri_final.pth')
+    torch.save(veltri_model.state_dict(), veltri_model_path)
+    print(f"✓ Veltri model saved to: {veltri_model_path}")
     
     # Clear memory before next dataset
     del veltri_model
@@ -508,7 +513,12 @@ if __name__ == "__main__":
     )
     
     plot_training_history(lmpred_history, "LMPred")
-    
+
+    # Save LMPred model
+    lmpred_model_path = os.path.join(RESULTS_DIR, 'prott5_lmpred_final.pth')
+    torch.save(lmpred_model.state_dict(), lmpred_model_path)
+    print(f"✓ LMPred model saved to: {lmpred_model_path}")
+
     # Save final results
     print("\n" + "="*80)
     print("SAVING FINAL RESULTS")
@@ -555,6 +565,8 @@ if __name__ == "__main__":
     print("="*80 + "\n")
     
     print("Results saved to:")
+    print(f"  - {os.path.join(RESULTS_DIR, 'prott5_veltri_final.pth')}")
+    print(f"  - {os.path.join(RESULTS_DIR, 'prott5_lmpred_final.pth')}")
     print(f"  - {os.path.join(RESULTS_DIR, 'prott5_veltri_training.png')}")
     print(f"  - {os.path.join(RESULTS_DIR, 'prott5_lmpred_training.png')}")
     print(f"  - {os.path.join(RESULTS_DIR, 'results_final_all_models.csv')}")
